@@ -1,9 +1,14 @@
- API & Interface Specification Requirement:
+API & Interface Specification Requirement:
+
 By the end of this phase, teams must fully specify the interfaces of the system
 before implementation. This includes:
+
 ■ REST API endpoints (URLs, HTTP methods).
+
 ■ Request parameters and payloads.
+
 ■ Response formats and HTTP status codes.
+
 ■ Authentication requirements (if applicable).
 
 
@@ -14,11 +19,13 @@ Authentication Requirements:
 
 Currently, endpoints under /api/** are open (permitted all) for development convenience as per 
 SecurityConfig.java
-.
+
 AuthController
  establishes a session-based authentication by storing customerId in the HttpSession.
+ 
 CartController
  endpoints (checkout) explicitly check for customerId in the session.
+ 
 Login
 URL: /api/login
 Method: POST
@@ -43,6 +50,7 @@ json
   "message": "Invalid email or password",
   "customerId": null
 }
+
 2. Movies
 Search & Browse Movies
 URL: /api/movies
@@ -96,6 +104,7 @@ json
   "genres": [...],
   "stars": [...]
 }
+
 3. Stars
 Get Star Details
 URL: /api/stars/{id}
@@ -111,6 +120,7 @@ json
     { "id": "tt0092099", "title": "Top Gun", "year": 1986, "director": "Tony Scott" }
   ]
 }
+
 4. Shopping Cart & Checkout
 Get Cart
 URL: /api/cart
@@ -126,6 +136,7 @@ json
     }
   ]
 }
+
 Add to Cart
 URL: /api/cart/add
 Method: POST
@@ -137,6 +148,7 @@ json
   "quantity": 1
 }
 Response: 200 OK ("Item added to cart")
+
 Update Cart Quantity
 URL: /api/cart/update
 Method: POST
@@ -147,6 +159,7 @@ json
   "quantity": 5
 }
 Response: 200 OK ("Cart updated")
+
 Remove from Cart
 URL: /api/cart/remove
 Method: POST
@@ -156,6 +169,7 @@ json
   "movieId": "tt1234567"
 }
 Response: 200 OK ("Item removed from cart")
+
 Checkout
 URL: /api/checkout
 Method: POST
@@ -168,6 +182,7 @@ json
   "cardNumber": "1234567890",
   "expiration": "2025-12-31"
 }
+
 Response:
 Success (200 OK): "Checkout successful"
 Failure (400 Bad Request): "Cart is empty", "Invalid credit card number", or "Invalid credit card information".
