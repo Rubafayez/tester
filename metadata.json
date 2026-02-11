@@ -1,5 +1,0 @@
-{
-  "name": "Fabflix",
-  "description": "A modern movie rental web application built with Angular. Browse top-rated movies, search by title or genre, manage a shopping cart, and simulate a checkout process.",
-  "requestFramePermissions": []
-}
