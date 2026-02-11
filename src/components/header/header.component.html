@@ -1,0 +1,37 @@
+<header class="bg-gray-800 shadow">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="flex h-16 items-center justify-between">
+      <div class="flex items-center">
+        <div class="flex-shrink-0">
+          <a routerLink="/movies" class="text-2xl font-bold text-red-600">FABFLIX</a>
+        </div>
+        @if (authService.isAuthenticated()) {
+          <div class="hidden md:block">
+            <div class="ml-10 flex items-baseline space-x-4">
+              <a routerLink="/movies" routerLinkActive="bg-gray-900 text-white" [routerLinkActiveOptions]="{exact: true}" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Movies</a>
+            </div>
+          </div>
+        }
+      </div>
+      <div class="hidden md:block">
+        <div class="ml-4 flex items-center md:ml-6">
+          @if (authService.isAuthenticated()) {
+            <a routerLink="/cart" class="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+              <span class="sr-only">View shopping cart</span>
+              <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c.51 0 .962-.344 1.087-.835l1.838-5.514A1.875 1.875 0 0018.614 6H6.214a1.875 1.875 0 00-1.838 2.086l1.455 5.448z" />
+              </svg>
+              @if (cartService.itemCount() > 0) {
+                <span class="absolute -top-2 -right-2 flex h-5 w-5 items-center justify-center rounded-full bg-red-600 text-xs font-bold text-white">{{ cartService.itemCount() }}</span>
+              }
+            </a>
+
+            <button (click)="logout()" class="ml-4 text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Logout</button>
+          } @else {
+            <a routerLink="/login" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Login</a>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
